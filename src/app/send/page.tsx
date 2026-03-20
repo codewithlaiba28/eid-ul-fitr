@@ -72,6 +72,7 @@ export default function SendPage() {
                 title="Create Wish Card"
                 subtitle="Design your personalized Eid card and copy it to share with family and friends."
                 icon="✨"
+                bgImage="/hero_image.png"
             />
 
             <div className="bg-primary flex-grow py-8 px-6 lg:px-20 relative overflow-hidden">
@@ -86,7 +87,7 @@ export default function SendPage() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6 }}
-                        className="w-full lg:w-5/12 space-y-6"
+                        className="w-full lg:w-4/12 space-y-6 lg:pt-8"
                     >
                         <div className="bg-white/70 backdrop-blur-md p-6 lg:p-8 rounded-[2rem] border border-accent-border shadow-xl ring-1 ring-black/5">
                             <h2 className="text-2xl font-serif text-text-heading mb-6 flex items-center gap-3">
@@ -192,7 +193,7 @@ export default function SendPage() {
                         initial={{ opacity: 0, scale: 0.95 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.6, delay: 0.2 }}
-                        className="w-full lg:w-7/12 flex flex-col items-center justify-center pt-4 lg:pt-0"
+                        className="w-full lg:w-8/12 flex flex-col items-center pt-0"
                     >
                         <div className="mb-4 text-text-muted text-[10px] uppercase tracking-widest font-bold flex items-center gap-2">
                             Live Preview
@@ -201,8 +202,8 @@ export default function SendPage() {
 
                         <div
                             ref={cardRef}
-                            className="w-full max-w-[380px] shadow-[0_30px_60px_rgba(0,0,0,0.15)] rounded-[2.5rem] relative overflow-hidden bg-white border border-accent/20 ring-1 ring-black/5"
-                            style={{ aspectRatio: '3.8/5' }}
+                            className="w-full max-w-[450px] shadow-[0_30px_60px_rgba(0,0,0,0.15)] rounded-[2.5rem] relative overflow-hidden bg-white border border-accent/20 ring-1 ring-black/5"
+                            style={{ aspectRatio: '1/1' }}
                         >
                             {/* Background Image */}
                             <div
@@ -220,20 +221,22 @@ export default function SendPage() {
                             <div className="absolute inset-0 ring-1 ring-inset ring-white/30 rounded-[2.5rem]" />
 
                             {/* Content */}
-                            <div className={`absolute inset-0 p-10 flex flex-col items-center justify-center text-center z-10 ${selectedBg.isLight ? 'text-slate-800' : 'text-white'}`}>
+                            <div className={`absolute inset-0 p-8 flex flex-col items-center justify-center text-center z-10 ${selectedBg.isLight ? 'text-slate-800' : 'text-white'}`}>
+                                <div className={`absolute inset-6 rounded-[2rem] border border-white/10 backdrop-blur-[2px] ${selectedBg.isLight ? 'bg-white/10' : 'bg-black/5'}`} />
+
                                 <motion.div
                                     animate={{
-                                        y: [0, -10, 0],
+                                        y: [0, -5, 0],
                                         opacity: [0.8, 1, 0.8]
                                     }}
                                     transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                                    className="mb-6"
+                                    className="mb-3 relative z-10"
                                 >
-                                    <span className="text-6xl drop-shadow-sm">🌙</span>
+                                    <span className="text-5xl drop-shadow-sm">🌙</span>
                                 </motion.div>
 
-                                <div className="space-y-6 w-full px-2">
-                                    <h3 className={`text-5xl lg:text-6xl font-serif font-black uppercase tracking-[0.1em] leading-tight ${selectedBg.isLight ? 'text-accent drop-shadow-sm' : 'text-glow-accent drop-shadow-lg'}`}>
+                                <div className="space-y-3 w-full px-2 relative z-10">
+                                    <h3 className={`text-4xl lg:text-5xl font-serif font-black uppercase tracking-[0.1em] leading-tight ${selectedBg.isLight ? 'text-accent drop-shadow-sm' : 'text-glow-accent drop-shadow-lg'}`}>
                                         Eid <br /> Mubarak
                                     </h3>
 
@@ -243,29 +246,29 @@ export default function SendPage() {
                                         <div className={`h-px w-10 ${selectedBg.isLight ? 'bg-accent/30' : 'bg-white/40'}`} />
                                     </div>
 
-                                    <div className="space-y-2">
-                                        <p className={`text-[10px] uppercase tracking-[0.4em] font-bold opacity-70`}>To my beloved</p>
-                                        <h4 className={`text-3xl font-serif font-bold italic tracking-wide capitalize ${selectedBg.isLight ? 'text-slate-900' : 'text-white drop-shadow-md'}`}>
+                                    <div className="space-y-1">
+                                        <p className={`text-[9px] uppercase tracking-[0.4em] font-bold opacity-70`}>To my beloved</p>
+                                        <h4 className={`text-2xl font-serif font-bold italic tracking-wide capitalize ${selectedBg.isLight ? 'text-slate-900' : 'text-white drop-shadow-md'}`}>
                                             {formData.recipientName || 'Recipient Name'}
                                         </h4>
                                     </div>
 
-                                    <div className="py-2 px-4 relative min-h-[80px] flex items-center justify-center">
-                                        <p className={`text-lg font-serif italic leading-relaxed ${selectedBg.isLight ? 'text-slate-700' : 'text-white/95 drop-shadow-md'}`}>
+                                    <div className="py-1 px-4 relative min-h-[60px] flex items-center justify-center">
+                                        <p className={`text-base font-serif italic leading-relaxed ${selectedBg.isLight ? 'text-slate-700' : 'text-white/95 drop-shadow-md'}`}>
                                             {formData.message || 'May Allah bless you with happiness and grace your home with warmth and peace.'}
                                         </p>
                                     </div>
 
-                                    <div className="pt-4">
-                                        <p className={`text-[9px] uppercase tracking-[0.5em] mb-1 opacity-60 font-bold`}>From the heart of</p>
-                                        <p className={`text-2xl font-serif font-black tracking-widest capitalize ${selectedBg.isLight ? 'text-accent' : 'text-white drop-shadow-lg'}`}>
+                                    <div className="pt-2">
+                                        <p className={`text-[8px] uppercase tracking-[0.5em] mb-0.5 opacity-60 font-bold`}>From the heart of</p>
+                                        <p className={`text-xl font-serif font-black tracking-widest capitalize ${selectedBg.isLight ? 'text-accent' : 'text-white drop-shadow-lg'}`}>
                                             {formData.senderName || 'Sender Name'}
                                         </p>
                                     </div>
                                 </div>
 
-                                <div className="absolute bottom-8 left-0 right-0 opacity-40">
-                                    <p className={`text-[8px] uppercase tracking-[0.6em] font-bold ${selectedBg.isLight ? 'text-slate-600' : 'text-white'}`}>Eid Al-Fitr 2026</p>
+                                <div className="absolute bottom-4 left-0 right-0 opacity-40 z-10">
+                                    <p className={`text-[7px] uppercase tracking-[0.6em] font-bold ${selectedBg.isLight ? 'text-slate-600' : 'text-white'}`}>Eid Al-Fitr 2026</p>
                                 </div>
                             </div>
                         </div>
